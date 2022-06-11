@@ -1,6 +1,3 @@
-import { shallowMount } from '@vue/test-utils'
-//import StoryList from '@/components/StoryList.vue'
-
 import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers'
 
 describe('getArraySample', () => {
