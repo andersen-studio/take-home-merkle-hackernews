@@ -1,27 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 //import StoryList from '@/components/StoryList.vue'
 
-function getRandomIndicesOfArray(inputArray: any[] = [], maxLength: number = 10, resultArray: any[] = [], visited: any = {}): any[] {
-  if (resultArray.length == maxLength) return resultArray
-  const randomTargetIndex = Math.floor(inputArray.length * Math.random())
-  if (!visited[randomTargetIndex]) {
-    visited[randomTargetIndex] = true
-    resultArray.push(inputArray[randomTargetIndex])
-  }
-  return getRandomIndicesOfArray(inputArray, maxLength, resultArray, visited)
-}
-
-function getArraySample(inputArray: any[] = [], maxLength: number = 10) {
-  if (inputArray.length < maxLength) return inputArray
-  return getRandomIndicesOfArray(inputArray, maxLength)
-}
-
-function getSortedListByKeyValue(list: object[], key?: string): any[] {
-  if (!key) return list
-  return list.sort((a: any, b: any) => {
-    return (b[key] || 0) > (a[key] || 0) ? 1 : -1
-  })
-}
+import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers'
 
 describe('getArraySample', () => {
   it('Returns empty array if no input', () => {
@@ -49,12 +29,12 @@ describe('getArraySample', () => {
 describe('getSortedListByKeyValue', () => {
   it('Returns same list if no key specified', () => {
     const sortableList: any[] = mockSortableStoryList(100)
-    expect(JSON.stringify(getSortedListByKeyValue(sortableList))).toEqual(JSON.stringify(sortableList))
+    expect(JSON.stringify(getSortedByKey(sortableList))).toEqual(JSON.stringify(sortableList))
   })
   const sortableList: any[] = mockSortableStoryList(100)
   let previousValue: number = Number.MAX_SAFE_INTEGER
   let isSorted: boolean = true
-  const sortedStoryList = getSortedListByKeyValue(sortableList, 'score')
+  const sortedStoryList = getSortedByKey(sortableList, 'score')
   for (let i = 0; i < sortedStoryList.length, i++;) {
     if (previousValue < sortedStoryList[i]) {
       isSorted = false
