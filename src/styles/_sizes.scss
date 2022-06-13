@@ -1,0 +1,25 @@
+@import './_functions';
+
+$sizes: (
+  "lg": 2.5rem,
+  "md": 1rem,
+  "sm": 0.5rem,
+  "full": 100%,
+  "1-of-2": 50%,
+  "1-of-5": 20%
+);
+
+$fragments: (
+  "text": "font-size",
+  "p": "padding",
+  "pl": "padding-left",
+  "pr": "padding-right",
+  "m": "margin",
+  "ml": "margin-left",
+  "mr": "margin-right",
+  "border": "border-width",
+  "w": "width",
+  "max-w": "max-width"
+);
+
+@include compileClasses($sizes, $fragments);

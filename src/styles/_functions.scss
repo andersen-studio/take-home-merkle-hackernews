@@ -1,0 +1,13 @@
+@mixin compileClasses($valueMap, $propertyMap) {
+
+  @each $valueKey,
+  $value in $valueMap {
+
+    @each $propertyKey,
+    $property in $propertyMap {
+      .#{$propertyKey}-#{$valueKey} {
+        #{$property}: $value
+      }
+    }
+  }
+}

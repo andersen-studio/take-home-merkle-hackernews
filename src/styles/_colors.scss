@@ -1,0 +1,17 @@
+@import './_functions';
+
+$colors: (
+  "dark": #04293A,
+  "dark-lighter": #064663,
+  "light": #fafafa,
+  "light-darker": #efefef,
+  "accent": #ECB365
+);
+
+$fragments: (
+  "bg": "background-color",
+  "text": "color",
+  "border": "border-color"
+);
+
+@include compileClasses($colors, $fragments);
