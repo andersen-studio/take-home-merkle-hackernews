@@ -39,16 +39,6 @@ npm run build
 npm run test:unit
 ```
 
-### Run your end-to-end tests
-```
-npm run test:e2e
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
 ## Development Strategy
 The development process for critical logic follows Test Driven Development ( TDD ) methodologies to enforce clarity in behavior and gain insight into which pieces needed to be developed first, following a bottom-up approach to the feature roadmap.
 - Write failing tests
