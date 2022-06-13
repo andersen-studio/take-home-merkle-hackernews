@@ -5,6 +5,7 @@ import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers';
 import StoryItem from '@/components/StoryItem.vue';
 import { Story } from '@/interfaces/Story'
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
+import AppIntroduction from '@/components/AppIntroduction.vue'
 
 const loading = ref<boolean>(false)
 const error = ref<boolean>(false)
@@ -22,7 +23,8 @@ async function retrieveStory(storyId: number): Promise<Story | null> {
   return null
 }
 
-onMounted(async () => {
+async function loadStories() {
+  loading.value = true
   const fetchedStoryIds = await fetchTopStories()
   if (fetchedStoryIds == null) return error.value = true
   const fetchedStories: Story[] = []
@@ -37,12 +39,36 @@ onMounted(async () => {
   await Promise.all(tasks)
   stories.value = getSortedByKey(fetchedStories, 'score')
   loading.value = false
+}
+
+onMounted(async () => {
+  loadStories()
 })
 </script>
 
 <template>
+  <div class="w-full mx-auto max-w-container">
+    <AppIntroduction />
+    <div :class="{ disabled: loading }" class="button ml-lg p-md bg-accent text-light" @click="loadStories()">Get 10
+      more
+      stories</div>
+  </div>
   <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
   </div>
   <LoadingSpinner v-else />
 </template>
+
+<style scoped>
+.button {
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 100ms ease-in-out;
+}
+
+.button.disabled {
+  cursor: inherit;
+  pointer-events: none;
+  background-color: gray;
+}
+</style>

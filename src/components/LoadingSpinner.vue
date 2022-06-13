@@ -6,7 +6,7 @@
     <div></div>
   </div>
 </template>
-<style scoped>
+<style lang="scss" scoped>
 .lds-ellipsis {
   position: absolute;
   left: 50%;
