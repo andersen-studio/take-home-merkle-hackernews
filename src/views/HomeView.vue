@@ -49,9 +49,14 @@ onMounted(async () => {
 <template>
   <div class="w-full mx-auto max-w-container">
     <AppIntroduction />
-    <div :class="{ disabled: loading }" class="button ml-lg p-md bg-accent text-light" @click="loadStories()">Get 10
+    <div :class="{ disabled: loading }" class="button ml-lg p-md mt-md bg-dark-lighter text-light"
+      @click="loadStories()">Get
+      10
       more
       stories</div>
+    <a style="border-style: solid; border-width:1px;" target="_blank"
+      class="button ml-lg p-md mt-md border-dark-lighter"
+      href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
   </div>
   <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
@@ -63,12 +68,13 @@ onMounted(async () => {
 .button {
   cursor: pointer;
   display: inline-block;
-  transition: background-color 100ms ease-in-out;
+  opacity: 1;
+  transition: opacity 100ms ease-in-out;
 }
 
 .button.disabled {
   cursor: inherit;
   pointer-events: none;
-  background-color: gray;
+  opacity: 0.5;
 }
 </style>
