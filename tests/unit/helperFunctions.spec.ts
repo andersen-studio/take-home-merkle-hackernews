@@ -1,4 +1,5 @@
 import { getArraySample, getSortedByScore } from '@/helpers/ArrayHelpers'
+import { Story } from '@/interfaces/Story'
 
 describe('getArraySample', () => {
   it('Returns empty array if no input', () => {
@@ -24,17 +25,17 @@ describe('getArraySample', () => {
 })
 
 describe('getSortedListByKeyValue', () => {
-  const sortableList: any[] = mockSortableStoryList(100)
+  const sortableList: object[] = mockSortableStoryList(100)
   let previousValue: number = Number.MAX_SAFE_INTEGER
   let isSorted: boolean = true
-  const sortedStoryList = getSortedByScore(sortableList)
-  for (let i = 0; i < sortedStoryList.length, i++;) {
-    if (previousValue < sortedStoryList[i].score) {
+  const sortedStoryList = getSortedByScore(<Story[]>sortableList)
+  for (let i = 1; i < sortedStoryList.length, i++;) {
+    if (sortedStoryList[i - 1].score < sortedStoryList[i].score) {
       isSorted = false
       return
     }
   }
-  it('Returns list in descending order by key "score"', () => {
+  it('Returns list in ascending order by key "score"', () => {
     expect(isSorted).toBe(true)
   })
 })
