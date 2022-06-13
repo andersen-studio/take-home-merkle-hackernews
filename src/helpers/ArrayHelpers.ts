@@ -19,6 +19,6 @@ export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
 
 export function getSortedByScore(list: Story[]): Story[] {
   return list.sort((a: Story, b: Story) => {
-    return b.score || 0 > a.score || 0 ? 1 : -1
+    return b.score > a.score || 0 ? 1 : -1
   })
 }
