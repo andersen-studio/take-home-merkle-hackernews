@@ -6,7 +6,8 @@ $sizes: (
   "sm": 0.5rem,
   "full": 100%,
   "1-of-2": 50%,
-  "1-of-5": 20%
+  "1-of-5": 20%,
+  "container": 1200px
 );
 
 $fragments: (
@@ -14,11 +15,17 @@ $fragments: (
   "p": "padding",
   "pl": "padding-left",
   "pr": "padding-right",
+  "pb": "padding-bottom",
+  "pt": "padding-top",
   "m": "margin",
+  "mt": "margin-top",
+  "mb": "margin-bottom",
   "ml": "margin-left",
   "mr": "margin-right",
   "border": "border-width",
   "w": "width",
+  "h": "height",
+  "min-h": "min-height",
   "max-w": "max-width"
 );
 

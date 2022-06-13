@@ -1,4 +1,14 @@
 // Base utility classes
 .flex {
   display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.mx-auto {
+  margin: 0 auto;
+}
+
+.flex>* {
+  flex-grow: 1;
 }

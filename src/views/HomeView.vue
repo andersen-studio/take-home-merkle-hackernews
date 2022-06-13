@@ -8,23 +8,16 @@ const loading = ref<boolean>(false)
 const error = ref<boolean>(false)
 const stories = ref<number[]>([])
 
-async function retrieveData(): Promise<number[] | null> {
-  loading.value = true
-  const stories = await fetchTopStories()
-  return stories || null
-}
-
-// lifecycle hooks
 onMounted(async () => {
-  const fetchedStoryIds = await retrieveData()
+  const fetchedStories = await fetchTopStories()
   loading.value = false
-  if (fetchedStoryIds == null) return error.value = true
-  stories.value = getSortedByKey(getArraySample(fetchedStoryIds), 'score')
+  if (fetchedStories == null) return error.value = true
+  stories.value = getSortedByKey(getArraySample(fetchedStories), 'score')
 })
 </script>
 
 <template>
-  <div v-if="!loading && stories">
+  <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="storyId in stories" :storyId="storyId" :key="storyId" />
   </div>
   <div class="loading" v-else>
