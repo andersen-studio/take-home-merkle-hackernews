@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { Story } from '@/interfaces/Story'
 import { ref, onMounted } from 'vue'
-import { fetchStory, fetchTopStories, fetchUser } from '@/services/HackerNewsAxios';
+import { fetchTopStories } from '@/services/HackerNewsAxios';
 import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers';
 import StoryItem from '@/components/StoryItem.vue';
 
@@ -32,9 +31,3 @@ onMounted(async () => {
     <p>Loading...</p>
   </div>
 </template>
-
-<style scoped>
-.card {
-  padding: 8px 16px;
-}
-</style>

@@ -34,19 +34,21 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div v-if="!loading && story">
-    <div>id: {{ props.storyId }}</div>
-    <a :href="story.url || 'https://news.ycombinator.com/item?id=' + props.storyId">
-      <div class="py-2 px-2">
-        <div>Title: {{ story.title }}</div>
-        <div>Time: {{ story.time }}</div>
-        <div>Score: {{ story.score }}</div>
-        <div>Author: {{ story.author.id }}</div>
-        <div>Karma: {{ story.author.karma }}</div>
-      </div>
-    </a>
-  </div>
-  <div class="loading" v-else>
-    <p>Loading...</p>
+  <div class="w-1-of-5">
+    <div v-if="!loading && story">
+      <div>id: {{ props.storyId }}</div>
+      <a :href="story.url || 'https://news.ycombinator.com/item?id=' + props.storyId">
+        <div class="py-2 px-2">
+          <div>Title: {{ story.title }}</div>
+          <div>Time: {{ story.time }}</div>
+          <div>Score: {{ story.score }}</div>
+          <div>Author: {{ story.author.id }}</div>
+          <div>Karma: {{ story.author.karma }}</div>
+        </div>
+      </a>
+    </div>
+    <div class="loading" v-else>
+      <p>Loading...</p>
+    </div>
   </div>
 </template>
