@@ -1,4 +1,4 @@
-import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers'
+import { getArraySample, getSortedByScore } from '@/helpers/ArrayHelpers'
 
 describe('getArraySample', () => {
   it('Returns empty array if no input', () => {
@@ -24,14 +24,10 @@ describe('getArraySample', () => {
 })
 
 describe('getSortedListByKeyValue', () => {
-  it('Returns same list if no key specified', () => {
-    const sortableList: any[] = mockSortableStoryList(100)
-    expect(JSON.stringify(getSortedByKey(sortableList))).toEqual(JSON.stringify(sortableList))
-  })
   const sortableList: any[] = mockSortableStoryList(100)
   let previousValue: number = Number.MAX_SAFE_INTEGER
   let isSorted: boolean = true
-  const sortedStoryList = getSortedByKey(sortableList, 'score')
+  const sortedStoryList = getSortedByScore(sortableList)
   for (let i = 0; i < sortedStoryList.length, i++;) {
     if (previousValue < sortedStoryList[i].score) {
       isSorted = false

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import { fetchTopStories, fetchStory, fetchUser } from '@/services/HackerNewsAxios';
-import { getArraySample, getSortedByKey } from '@/helpers/ArrayHelpers';
+import { getArraySample, getSortedByScore } from '@/helpers/ArrayHelpers';
 import StoryItem from '@/components/StoryItem.vue';
 import { Story } from '@/interfaces/Story'
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
@@ -37,7 +37,7 @@ async function loadStories() {
     })
   })
   await Promise.all(tasks)
-  stories.value = getSortedByKey(fetchedStories, 'score')
+  stories.value = getSortedByScore(fetchedStories)
   loading.value = false
 }
 

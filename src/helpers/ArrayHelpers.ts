@@ -17,10 +17,8 @@ export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
     : workingArray
 }
 
-export function getSortedByKey(list: Story[], key?: string): any[] {
-  if (!key) return list
-  return list.sort((a: object, b: object) => {
-    // @ts-ignore comment
-    return (parseInt(b[key]) || 0) > parseInt((a[key] || 0)) ? 1 : -1
+export function getSortedByScore(list: Story[]): Story[] {
+  return list.sort((a: Story, b: Story) => {
+    return b.score || 0 > a.score || 0 ? 1 : -1
   })
 }
