@@ -1,5 +1,7 @@
 import { HackerNewsStory } from "./HackerNewsStory";
+import { HackerNewsUser } from "./HackerNewsUser";
 
 export interface Story extends HackerNewsStory {
-  thumbnail: String
+  thumbnail: String,
+  author: HackerNewsUser
 }

@@ -1,11 +1,21 @@
-import { shallowMount } from '@vue/test-utils'
 import StoryItem from '@/components/StoryItem.vue'
+import { HackerNewsUser } from '@/interfaces/HackerNewsUser'
 import { Story } from '@/interfaces/Story'
+import { shallowMount, VueWrapper } from '@vue/test-utils'
+
+const mockedAuthor: HackerNewsUser = {
+  about: 'Some hacker',
+  created: new Date().getTime(),
+  id: 'MockMan',
+  karma: 123,
+  submitted: []
+}
 
 const mockedStory: Story = {
   by: 'MockMan',
+  author: mockedAuthor,
   descendants: 0,
-  id: Math.floor(Math.random() * 100000),
+  id: 123,
   kids: [],
   score: Math.floor(Math.random() * 1000),
   time: new Date().getTime(),
@@ -15,18 +25,26 @@ const mockedStory: Story = {
   thumbnail: `https://picsum.photos/seed/${new Date().getTime()}/200/300`
 }
 
+
+const uiElementsWanted: string[] = ["title", "url", "time", "score", "author-id", "author-karma"]
+
 describe('StoryItem', () => {
-  const mockId = Math.floor(Math.random() * 100000)
-  const wrapper = shallowMount(StoryItem, {
+  const mockId: number = Math.floor(Math.random() * 100000)
+  const wrapper: VueWrapper = shallowMount(StoryItem, {
     data() {
       return {
-        id: mockedStory.id,
-        data: mockedStory
+        storyId: mockedStory.id
       }
     }
   })
-  it('Starts off in loading state with given ID', () => {
-    expect(wrapper).toHaveProperty('loading', true)
-    expect(wrapper).toHaveProperty('id', mockId)
+  describe('While loading...', () => {
+    it('Is set to "loading"', () => {
+      expect(wrapper.find('.loading').exists()).toBe(true)
+    })
+    it('Has skeleton loader for all story elements', () => {
+      uiElementsWanted.map((elementClass) => {
+        expect(wrapper.find('.loading.' + elementClass).exists()).toBe(true)
+      })
+    })
   })
 })
