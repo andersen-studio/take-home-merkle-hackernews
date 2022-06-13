@@ -35,8 +35,9 @@ onMounted(async () => {
 
 <template>
   <div v-if="!loading && story">
-    <a :href="story.url">
-      <div class="card">
+    <div>id: {{ props.storyId }}</div>
+    <a :href="story.url || 'https://news.ycombinator.com/item?id=' + props.storyId">
+      <div class="py-2 px-2">
         <div>Title: {{ story.title }}</div>
         <div>Time: {{ story.time }}</div>
         <div>Score: {{ story.score }}</div>
@@ -49,9 +50,3 @@ onMounted(async () => {
     <p>Loading...</p>
   </div>
 </template>
-
-<style scoped>
-.card {
-  padding: 8px 16px;
-}
-</style>

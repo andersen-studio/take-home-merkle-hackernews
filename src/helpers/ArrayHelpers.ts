@@ -1,5 +1,5 @@
 // Happy path only iterates maxLength times, but worst case towards infinity.
-function _recursivelyGetUniqueRandomItems(inputArray: any[] = [], maxLength: number = 10, resultArray: any[] = [], visited: any = {}): any[] {
+function _recursivelyGetUniqueRandomItems(inputArray: any[] = [], maxLength = 10, resultArray: any[] = [], visited: any = {}): any[] {
   if (resultArray.length >= maxLength) return resultArray
   const randomTargetIndex = Math.floor(inputArray.length * Math.random())
   if (!visited[randomTargetIndex]) {
@@ -10,13 +10,13 @@ function _recursivelyGetUniqueRandomItems(inputArray: any[] = [], maxLength: num
 }
 
 // Always iterates only maxLength times. O(maxLength). Recommended.
-export function getArraySample(inputArray: any[] = [], maxLength: number = 10): any[] {
+export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
   let steps = 0
   const workingArray = inputArray.slice(0)
   let i = workingArray.length
   while (--i > 0 && steps <= maxLength) {
-    let target = Math.floor(Math.random() * i + 1)
-    let temp = workingArray[target]
+    const target = Math.floor(Math.random() * i + 1)
+    const temp = workingArray[target]
     inputArray[target] = workingArray[i]
     workingArray[i] = temp
     steps++
