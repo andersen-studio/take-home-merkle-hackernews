@@ -6,72 +6,92 @@ import { defineProps } from 'vue';
 import { parseEpochTimestamp } from '@/helpers/TimeHelpers';
 
 const props = defineProps<{
-  storyId: number
+  story: Story
 }>()
 
-const loading = ref<boolean>(false)
+const loading = ref<boolean>(true)
 const error = ref<boolean>(false)
-const story = ref<Story>({
-  by: '',
-  author: {
-    about: '',
-    created: 0,
-    id: '',
-    karma: 0,
-    submitted: []
-  },
-  descendants: 0,
-  id: 0,
-  kids: [],
-  score: 0,
-  time: 0,
-  title: '.',
-  type: '',
-  url: '',
-  thumbnail: ``
-})
-
-async function retrieveData(storyId: number): Promise<Story | null> {
-  loading.value = true
-  const storyData = await fetchStory(storyId)
-  if (storyData) {
-    const authorData = await fetchUser(storyData.by)
-    if (authorData) {
-      return { ...storyData, ...{ author: authorData, thumbnail: `https://picsum.photos/seed/${storyData.id}/200/100` } }
-    }
-  }
-  return null
-}
+const story = ref<Story>(props.story)
 
 // lifecycle hooks
 onMounted(async () => {
-  const fetchedStory = await retrieveData(props.storyId)
-  loading.value = false
-  if (fetchedStory == null) return error.value = true
-  story.value = fetchedStory
+  const backgroundImg: any = document.createElement('img')
+  backgroundImg.setAttribute('src', story.value.thumbnail.toString())
+  backgroundImg.addEventListener('load', () => {
+    loading.value = false
+  })
 })
 </script>
 
 <template>
-  <div class="w-1-of-5 p-md m-md card max-w-full bg-dark-lighter" :class="{ loading }">
-    <a :href="story.url || 'https://news.ycombinator.com/item?id=' + props.storyId">
-      <div class="py-2 px-2 skeleton">
-        <div class="title font-bold mb-md">{{ story.title || ' ' }}</div>
-        <div class="time">{{ parseEpochTimestamp(story.time) }}</div>
-        <div>Score: {{ story.score }}</div>
-        <div>Author: {{ story.author.id }}</div>
-        <div>Karma: {{ story.author.karma }}</div>
+  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter" :class="{ loading }" target="_blank"
+    :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id"
+    :style="loading ? 'background-image: none;' : `background-image: url(${story.thumbnail});`">
+    <div class="pb-md pl-md pr-md skeleton">
+      <span class="score p-md bg-dark text-lg font-bold">
+        <div>{{ story.score }}</div>
+        <div class="text-md text-accent ">Point{{ story.score > 1 ? 's' : '' }}</div>
+      </span>
+      <div class="title text-display mb-sm">
+        {{ story.title || ' ' }}
       </div>
-    </a>
-  </div>
+      <div class="font-thin">
+        Posted by <span class="text-accent font-regular">{{ story.author.id }}</span> - {{ story.author.karma }} karma
+        <div class="mt-sm">
+          {{
+              parseEpochTimestamp(story.time)
+          }}
+        </div>
+      </div>
+    </div>
+  </a>
 </template>
 <style scoped lang="scss">
+.skeleton {
+  padding-top: 200px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
+  opacity: 1;
+  transition: opacity 500ms ease-in-out;
+}
+
+.points {
+  border-radius: 16px;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.loading .skeleton {
+  opacity: 0;
+}
+
 .card {
   width: 500px;
   border-radius: 6px;
-
-  /* Prevents overflow */
+  background-size: cover;
+  padding-top: 100px;
   min-width: 0;
+  border-style: solid;
+  border-width: 5px;
+}
+
+.card {
+  transition: all 200ms ease-in-out;
+  background-position: center center;
+  position: relative;
+}
+
+.card .skeleton>div {
+  transition: top 100ms ease-in-out;
+  position: relative;
+  top: 0;
+}
+
+.card:hover .skeleton>div {
+  top: -32px;
 }
 
 .title {
@@ -83,16 +103,19 @@ onMounted(async () => {
 .skeleton>*,
 .card {
   transition: all 100ms ease-in-out;
-  transform: scale(1, 1);
 }
 
 .card.loading {
   opacity: 0.5;
-  transform: scale(0.9, 0.9);
 }
 
 .loading .skeleton>* {
   color: rgba(0, 0, 0, 0);
   border-radius: 4px;
+}
+
+.score {
+  border-bottom-left-radius: 4px;
+  text-align: right;
 }
 </style>
