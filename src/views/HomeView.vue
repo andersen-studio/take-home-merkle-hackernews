@@ -55,7 +55,7 @@ onMounted(async () => {
       more
       stories</div>
     <a style="border-style: solid; border-width:1px;" target="_blank"
-      class="button ml-lg p-md mt-md border-dark-lighter"
+      class="button ml-sm p-md mt-md border-dark-lighter"
       href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
   </div>
   <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
