@@ -1,13 +1,4 @@
-// Happy path only iterates maxLength times, but worst case towards infinity.
-function _recursivelyGetUniqueRandomItems(inputArray: any[] = [], maxLength = 10, resultArray: any[] = [], visited: any = {}): any[] {
-  if (resultArray.length >= maxLength) return resultArray
-  const randomTargetIndex = Math.floor(inputArray.length * Math.random())
-  if (!visited[randomTargetIndex]) {
-    visited[randomTargetIndex] = true
-    resultArray.push(inputArray[randomTargetIndex])
-  }
-  return _recursivelyGetUniqueRandomItems(inputArray, maxLength, resultArray, visited)
-}
+import { Story } from "@/interfaces/Story"
 
 // Always iterates only maxLength times. O(maxLength). Recommended.
 export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
@@ -26,9 +17,10 @@ export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
     : workingArray
 }
 
-export function getSortedByKey(list: object[], key?: string): any[] {
+export function getSortedByKey(list: Story[], key?: string): any[] {
   if (!key) return list
-  return list.sort((a: any, b: any) => {
-    return (b[key] || 0) > (a[key] || 0) ? 1 : -1
+  return list.sort((a: object, b: object) => {
+    // @ts-ignore comment
+    return (parseInt(b[key]) || 0) > parseInt((a[key] || 0)) ? 1 : -1
   })
 }

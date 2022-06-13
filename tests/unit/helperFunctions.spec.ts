@@ -33,7 +33,7 @@ describe('getSortedListByKeyValue', () => {
   let isSorted: boolean = true
   const sortedStoryList = getSortedByKey(sortableList, 'score')
   for (let i = 0; i < sortedStoryList.length, i++;) {
-    if (previousValue < sortedStoryList[i]) {
+    if (previousValue < sortedStoryList[i].score) {
       isSorted = false
       return
     }
