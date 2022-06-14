@@ -5,7 +5,6 @@ jest.mock("axios")
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
 const fetchTopStoriesResponse: number[] = [123, 123, 123, 123]
-const fetchStoryResponse: object = { "id": 123 }
 
 mockedAxios.get.mockImplementation((url) => {
   switch (url) {
@@ -44,11 +43,6 @@ describe("fetchStory", () => {
     })
   })
   describe("If bad API call", () => {
-    it("Should return null on missing parameter", async () => {
-      // @ts-ignore
-      const result = await fetchStory()
-      expect(result).toBe(null)
-    })
     it("Should return null on API error", async () => {
       mockedAxios.get.mockRejectedValueOnce(null)
       const result = await fetchStory(123)
@@ -65,11 +59,6 @@ describe("fetchUser", () => {
     })
   })
   describe("If bad API call", () => {
-    it("Should return null on missing parameter", async () => {
-      // @ts-ignore
-      const result = await fetchUser()
-      expect(result).toBe(null)
-    })
     it("Should return null on API error", async () => {
       mockedAxios.get.mockRejectedValueOnce(null)
       const result = await fetchUser('123')

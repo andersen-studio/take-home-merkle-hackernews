@@ -25,9 +25,8 @@ describe('getArraySample', () => {
 })
 
 describe('getSortedListByKeyValue', () => {
-  const sortableList: object[] = mockSortableStoryList(100)
-  let previousValue: number = Number.MAX_SAFE_INTEGER
-  let isSorted: boolean = true
+  const sortableList: Story[] | object[] = mockSortableStoryList(100)
+  let isSorted = true
   const sortedStoryList = getSortedByScore(<Story[]>sortableList)
   for (let i = 1; i < sortedStoryList.length, i++;) {
     if (sortedStoryList[i - 1].score < sortedStoryList[i].score) {
@@ -40,11 +39,11 @@ describe('getSortedListByKeyValue', () => {
   })
 })
 
-function mockSortableStoryList(length: number = 10) {
-  const list: Object[] = []
+function mockSortableStoryList(length = 10) {
+  const list: Record<string, unknown>[] = []
   for (let i = 0; i < length; i++) {
     list.push({
-      id: (Math.floor(Math.random() * 1000)).toString(),
+      id: Math.floor(Math.random() * 1000),
       score: Math.floor(Math.random() * 1000)
     })
   }
