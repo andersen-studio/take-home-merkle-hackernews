@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Story } from '@/interfaces/Story'
-import { defineProps, ref, onMounted, nextTick } from 'vue'
+import { defineProps, ref, onMounted } from 'vue'
 import { parseEpochTimestamp } from '@/helpers/TimeHelpers';
 
 const props = defineProps<{
@@ -12,7 +12,7 @@ const story = ref<Story>(props.story)
 
 // lifecycle hooks
 onMounted(async () => {
-  const backgroundImg: any = document.createElement('img')
+  const backgroundImg = document.createElement('img')
   backgroundImg.setAttribute('src', story.value.thumbnail.toString())
   backgroundImg.addEventListener('load', () => {
     loading.value = false

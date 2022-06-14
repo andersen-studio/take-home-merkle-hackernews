@@ -1,7 +1,7 @@
 import { Story } from "@/interfaces/Story"
 
 // Always iterates only maxLength times. O(maxLength). Recommended.
-export function getArraySample(inputArray: any[] = [], maxLength = 10): any[] {
+export function getArraySample(inputArray: number[] = [], maxLength = 10): number[] {
   let steps = 0
   const workingArray = inputArray.slice(0)
   let i = workingArray.length

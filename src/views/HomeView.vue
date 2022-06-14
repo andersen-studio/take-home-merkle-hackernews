@@ -29,7 +29,7 @@ async function loadStories() {
   if (fetchedStoryIds == null) return error.value = true
   const fetchedStories: Story[] = []
   const tasks: Promise<Story | void>[] = getArraySample(fetchedStoryIds).map((storyId: number) => {
-    return new Promise<Story | void>((resolve, reject) => {
+    return new Promise<Story | void>((resolve) => {
       retrieveStory(storyId).then((story) => {
         if (story) fetchedStories.push(story)
         resolve()
@@ -49,11 +49,11 @@ onMounted(async () => {
 <template>
   <div class="w-full mx-auto max-w-container">
     <AppIntroduction />
-    <div tabindex="0" :class="{ disabled: loading }" class="button ml-lg p-md mt-md bg-dark-lighter text-light"
-      @click="loadStories()">Get
+    <button tabindex="0" style="border-style: solid;" :class="{ disabled: loading }"
+      class="button border-dark-lighter ml-lg p-md mt-md bg-dark-lighter text-light" @click="loadStories()">Get
       10
       more
-      stories</div>
+      stories</button>
     <a style="border-style: solid; border-width:1px;" target="_blank"
       class="button ml-sm p-md mt-md border-dark-lighter"
       href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
