@@ -49,7 +49,7 @@ onMounted(async () => {
 <template>
   <div class="w-full mx-auto max-w-container">
     <AppIntroduction />
-    <div :class="{ disabled: loading }" class="button ml-lg p-md mt-md bg-dark-lighter text-light"
+    <div tabindex="0" :class="{ disabled: loading }" class="button ml-lg p-md mt-md bg-dark-lighter text-light"
       @click="loadStories()">Get
       10
       more
