@@ -1,7 +1,29 @@
-$breakpoint-mobile: 768px;
+$breakpoint-mobile: 1000px;
 
 @media (max-width: $breakpoint-mobile) {
   .mobile-no-pt {
     padding-top: 0px !important;
+  }
+
+  .skeleton {
+    padding-top: 130px !important;
+  }
+
+  .card {
+    font-size: 90%;
+    margin: 0.5rem 0rem;
+
+    .title {
+      font-size: 120%;
+    }
+  }
+}
+
+@media (min-width: $breakpoint-mobile) {
+  .title {
+    font-size: 110%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }

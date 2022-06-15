@@ -30,10 +30,10 @@ onMounted(async () => {
         <div>{{ story.score }}</div>
         <div class="text-md text-accent ">Point{{ story.score > 1 ? 's' : '' }}</div>
       </span>
-      <div class="title text-display mb-sm">
+      <div class="title line-height-title text-display mb-sm">
         {{ story.title || ' ' }}
       </div>
-      <div class="font-thin">
+      <div class="font-thin info">
         Posted by <span class="text-accent font-regular">{{ story.author.id }}</span> - {{ story.author.karma }} karma
         <div class="mt-sm">
           {{
@@ -101,11 +101,5 @@ onMounted(async () => {
       }
     }
   }
-}
-
-.title {
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
 }
 </style>
