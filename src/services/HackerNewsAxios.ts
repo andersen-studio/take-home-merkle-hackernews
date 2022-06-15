@@ -5,7 +5,7 @@ import axios from "axios"
 export const HACKERNEWS_API_VERSION = 0
 export const HACKERNEWS_BASE_URL = `https://hacker-news.firebaseio.com/v${HACKERNEWS_API_VERSION}`
 
-async function tryGet(resource: string, fallback: [] | null): Promise<any> {
+async function tryGet(resource: string, fallback: [] | null) {
   try {
     return (await axios.get(`${HACKERNEWS_BASE_URL}/${resource}`)).data
   } catch (e) {
