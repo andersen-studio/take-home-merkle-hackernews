@@ -1,5 +1,5 @@
 # 10 Random Stories
-![Passed tests](https://img.shields.io/badge/passed%20tests-12-green)
+![Passed tests](https://img.shields.io/badge/passed%20tests-10-green)
 
 10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score.
 
