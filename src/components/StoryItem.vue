@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter" :class="{ loading }" target="_blank"
+  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark" :class="{ loading }" target="_blank"
     :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id" :style="loading ?
     'background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);'
     : `background-image: url(${story.thumbnail});`">
@@ -50,6 +50,10 @@ onMounted(async () => {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
   opacity: 1;
   transition: opacity 500ms ease-in-out;
+
+  >* {
+    transition: all 200ms ease-in-out;
+  }
 }
 
 .points {
@@ -60,10 +64,19 @@ onMounted(async () => {
   position: absolute;
   top: 0;
   right: 0;
+  border-bottom-left-radius: 4px;
+  text-align: right;
 }
 
-.loading .skeleton {
-  opacity: 0;
+.loading {
+  .skeleton {
+    opacity: 0;
+
+    >* {
+      color: rgba(0, 0, 0, 0);
+      border-radius: 4px;
+    }
+  }
 }
 
 .card {
@@ -74,46 +87,36 @@ onMounted(async () => {
   min-width: 0;
   border-style: solid;
   border-width: 5px;
-}
-
-.card {
   transition: all 200ms ease-in-out;
   background-position: center center;
   position: relative;
-}
+  transition: all 200ms ease-in-out;
+  -webkit-animation: fadein 150ms ease-in-out;
+  -moz-animation: fadein 150ms ease-in-out;
+  -ms-animation: fadein 150ms ease-in-out;
+  -o-animation: fadein 150ms ease-in-out;
+  animation: fadein 150ms ease-in-out;
 
-.card .skeleton>div {
-  transition: top 200ms ease-in-out;
-  position: relative;
-  top: 0;
-}
+  .skeleton {
+    >div {
+      transition: top 200ms ease-in-out;
+      position: relative;
+      top: 0;
+    }
+  }
 
-.card:hover .skeleton>div {
-  top: -10px;
+  &:hover {
+    .skeleton {
+      >div {
+        top: -10px;
+      }
+    }
+  }
 }
 
 .title {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-}
-
-.skeleton>*,
-.card {
-  transition: all 200ms ease-in-out;
-}
-
-.card.loading {
-  opacity: 0.5;
-}
-
-.loading .skeleton>* {
-  color: rgba(0, 0, 0, 0);
-  border-radius: 4px;
-}
-
-.score {
-  border-bottom-left-radius: 4px;
-  text-align: right;
 }
 </style>

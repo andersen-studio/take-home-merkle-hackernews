@@ -10,4 +10,5 @@
 @import 'styles/_colors.scss';
 @import 'styles/_sizes.scss';
 @import 'styles/_layout.scss';
+@import 'styles/_animations.scss';
 </style>
