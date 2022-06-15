@@ -11,4 +11,5 @@
 @import 'styles/_sizes.scss';
 @import 'styles/_layout.scss';
 @import 'styles/_animations.scss';
+@import 'styles/_breakpoints.scss';
 </style>

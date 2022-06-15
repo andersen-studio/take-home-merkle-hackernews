@@ -1,0 +1,7 @@
+$breakpoint-mobile: 768px;
+
+@media (max-width: $breakpoint-mobile) {
+  .mobile-no-pt {
+    padding-top: 0px !important;
+  }
+}

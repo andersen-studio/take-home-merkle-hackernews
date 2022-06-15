@@ -49,14 +49,16 @@ onMounted(async () => {
 <template>
   <div class="w-full mx-auto max-w-container">
     <AppIntroduction />
-    <button tabindex="0" style="border-style: solid;" :class="{ disabled: loading }"
-      class="button border-dark-lighter ml-lg p-md mt-md bg-dark-lighter text-light" @click="loadStories()">Get
-      10
-      more
-      stories</button>
-    <a style="border-style: solid; border-width:1px;" target="_blank"
-      class="button ml-sm p-md mt-md border-dark-lighter"
-      href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
+    <div class="flex flex-center max-w-container pl-lg pr-lg mt-md">
+      <button tabindex="0" style="border-style: solid;" :class="{ disabled: loading }"
+        class="max-w-200 button border border-dark-lighter p-md bg-dark-lighter text-md text-light"
+        @click="loadStories()">Get
+        10
+        more
+        stories</button>
+      <a target="_blank" class="max-w-200 button text-center text-md p-md border border-dark-lighter"
+        href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
+    </div>
   </div>
   <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
@@ -64,10 +66,9 @@ onMounted(async () => {
   <LoadingSpinner v-else />
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 .button {
   cursor: pointer;
-  display: inline-block;
   opacity: 1;
   transition: opacity 100ms ease-in-out;
 }

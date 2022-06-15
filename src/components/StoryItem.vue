@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter" :class="{ loading }" target="_blank"
+  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter mobile-no-pt" :class="{ loading }" target="_blank"
     :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id" :style="loading ?
     'background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);'
     : `background-image: url(${story.thumbnail});`">

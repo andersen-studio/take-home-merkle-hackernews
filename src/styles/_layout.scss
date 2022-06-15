@@ -3,12 +3,25 @@
   display: flex;
   align-items: flex-start;
   flex-wrap: wrap;
+
+  * {
+    flex-grow: 1;
+  }
+}
+
+.flex-center {
+  justify-content: center;
 }
 
 .mx-auto {
   margin: 0 auto;
 }
 
-.flex>* {
-  flex-grow: 1;
+.text-center {
+  text-align: center;
+}
+
+.border {
+  border-style: solid;
+  border-width: 1px;
 }
