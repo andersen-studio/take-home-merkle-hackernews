@@ -5,7 +5,6 @@ import { getArraySample, getSortedByScore } from '@/helpers/ArrayHelpers';
 import StoryItem from '@/components/StoryItem.vue';
 import { Story } from '@/interfaces/Story'
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
-import AppIntroduction from '@/components/AppIntroduction.vue'
 
 const loading = ref<boolean>(false)
 const error = ref<boolean>(false)
@@ -47,20 +46,17 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full mx-auto max-w-container">
-    <AppIntroduction />
-    <div class="flex flex-center max-w-container pl-lg pr-lg mt-md">
+  <div class="w-full mx-auto max-w-container pt-lg">
+    <div class="fixed bg-dark w-full flex flex-center max-w-container pl-md pr-md pt-md pb-md">
+      <h1 class="logo pl-md ml-sm bg-dark">Random Hacker News</h1>
       <button tabindex="0" style="border-style: solid;" :class="{ disabled: loading }"
         class="max-w-200 button border border-dark-lighter p-md bg-dark-lighter text-md text-light"
-        @click="loadStories()">Get
-        10
-        more
-        stories</button>
+        @click="loadStories()">GET 10 NEW STORIES</button>
       <a target="_blank" class="max-w-200 button text-center text-md p-md border border-dark-lighter"
-        href="https://github.com/andersen-studio/take-home-merkle-hackernews">View Source</a>
+        href="https://github.com/andersen-studio/take-home-merkle-hackernews">GitHub</a>
     </div>
   </div>
-  <div class="p-md flex w-full mx-auto max-w-container" v-if="!loading && stories">
+  <div class="p-md pt-55 flex w-full mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
   </div>
   <LoadingSpinner v-else />
@@ -77,5 +73,10 @@ onMounted(async () => {
   cursor: inherit;
   pointer-events: none;
   opacity: 0.5;
+}
+
+.logo {
+  font-size: 1.2rem;
+  align-self: center;
 }
 </style>

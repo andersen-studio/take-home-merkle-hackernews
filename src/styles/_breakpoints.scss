@@ -17,6 +17,15 @@ $breakpoint-mobile: 1000px;
       font-size: 120%;
     }
   }
+
+  .logo {
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    width: 100%;
+  }
 }
 
 @media (min-width: $breakpoint-mobile) {

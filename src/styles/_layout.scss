@@ -25,3 +25,9 @@
   border-style: solid;
   border-width: 1px;
 }
+
+.fixed {
+  position: fixed;
+  top: 0;
+  z-index: 9;
+}
