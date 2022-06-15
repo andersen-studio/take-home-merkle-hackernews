@@ -21,7 +21,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark" :class="{ loading }" target="_blank"
+  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter" :class="{ loading }" target="_blank"
     :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id" :style="loading ?
     'background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);'
     : `background-image: url(${story.thumbnail});`">
@@ -51,7 +51,7 @@ onMounted(async () => {
   opacity: 1;
   transition: opacity 500ms ease-in-out;
 
-  >* {
+  >div {
     transition: all 200ms ease-in-out;
   }
 }
@@ -66,17 +66,6 @@ onMounted(async () => {
   right: 0;
   border-bottom-left-radius: 4px;
   text-align: right;
-}
-
-.loading {
-  .skeleton {
-    opacity: 0;
-
-    >* {
-      color: rgba(0, 0, 0, 0);
-      border-radius: 4px;
-    }
-  }
 }
 
 .card {
