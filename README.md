@@ -44,8 +44,9 @@ For the usecase outlined in the requirements, the total API calls to HackerNews 
 
 To ensure performant fetching, the flow is as follows:
 - Get stories
-- In parallel
+- For all stories in parallel
   - Get story content
+  - then
   - Get author content
 
 Images associated with a story are lazy-loaded after rendering to improve perceived performance.
