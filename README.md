@@ -1,22 +1,13 @@
 # 10 Random Stories
-![Passed tests](https://img.shields.io/badge/passed%20tests-10-green)
+![Unit tests passed](https://img.shields.io/badge/passed%20tests-10-green)
 
-10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score.
+[Live Demo](https://andersen.studio/random-stories/)
 
-[Hosted demo](https://andersen.studio/random-stories/)
+[![Screenshot](readme_assets/screenshot.jpg)](https://andersen.studio/random-stories/)
 
-## Notable features
-- Test Driven Development followed for: API Consumer, Random selection from larger sample, sorting by score.
-- Loading stages while: Fetching story list, story content, author content, background image.
-- TypeScript was used to reduce mental overhead and type errors for API response types in particular
-- Production-ready and hosted on DigitalOcean
-- Partial use of SCSS ( CSS-precompiler )
-- Home-brewed SCSS Utility class generator
+10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score ascending.
 
 ## Installation
-
-Using [git](https://git-scm.com/) and [npm](https://npmjs.com/).
-
 ```bash
 git clone https://github.com/andersen-studio/take-home-merkle-hackernews.git
 npm i
@@ -24,33 +15,58 @@ npm i
 
 ## Usage
 
-### Compiles and hot-reloads for development
+#### Compiles and hot-reloads for development
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+#### Compiles and minifies for production
 ```
 npm run build
 ```
 
-### Run your unit tests
+#### Run your unit tests
 ```
 npm run test:unit
 ```
 
-## Development Strategy
-The development process for critical logic follows Test Driven Development ( TDD ) methodologies to enforce clarity in behavior and gain insight into which pieces needed to be developed first, following a bottom-up approach to the feature roadmap.
-- Write failing tests
-- Develop minimum amount of code to pass tests
-- Consider time and space complexity
-- Revise and clean-up, optimize if possible
-- Consider if more tests are needed, otherwise repeat for the next logical task
+## Questions and answers
 
-## Notes
-When time is of the essence, not everything can follow a thorough TDD flow, so it is imperative that the most critical functions are battle-tested and can be relied upon.
+### How does it select 10 random stories?
+The algorythm selecting 10 random stories is using a modern Fisher-Yates implementation since it runs in **O(n)** `where n = desired output count` while preventing duplicates.
 
-I hope you enjoy the [demo!](https://andersen.studio/random-stories)
+### How is performance handled in relation to API calls?
+For the usecase outlined in the requirements, the total API calls to HackerNews API are as follows:
+- `01` Get stories
+- `10` Get story content
+- `10` Get author content
+- `21` Total calls
+
+To ensure performant fetching, the flow is as follows:
+- Get stories
+- In parallel
+  - Get story content
+  - Get author content
+
+Images associated with a story are lazy-loaded after rendering to improve perceived performance.
+
+## Development strategy
+
+### General development flow
+- Understanding the requirements specification
+- Map out most important components to satisfy these requirements
+- Add TypeScript interfaces for HackerNews Stories and Authors
+- Add TypeScript interface extending the Stories and Authors to include thumbnail and author in root scope.
+- Write test cases for random selection, sorting, and API
+- Develop and continually test until all tests pass
+- Clean up and optimize
+- Test Driven Development was omitted for consumers of the tested code as this was deemed overly verbose given time constraints
+- HTML/VUE development to display values
+- Several loading stages to ensure good UX
+- SCSS framework developed to generate utility classes for common styling tasks such as flexbox, margins, etc.
+- Continual revision and tweaks based on linter and manual testing in browser & mobile (Chrome, Android, iPhone) for polish
+- README polish
+- Deployment via GitHub actions and DigitalOcean
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
