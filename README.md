@@ -3,11 +3,11 @@
 
 [Live Demo](https://andersen.studio/random-stories/)
 
+10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score ascending.
+
 [![Screenshot](readme_assets/screenshot.jpg)](https://andersen.studio/random-stories/)
 
 https://user-images.githubusercontent.com/105841493/174087306-c39136dc-1b0e-45da-b348-9577a7f65548.mp4
-
-10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score ascending.
 
 ## Installation
 ```bash
