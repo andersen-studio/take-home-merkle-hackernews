@@ -5,6 +5,8 @@
 
 [![Screenshot](readme_assets/screenshot.jpg)](https://andersen.studio/random-stories/)
 
+https://github.com/andersen-studio/take-home-merkle-hackernews/blob/main/readme_assets/mobile.mp4
+
 10 Random Stories is a web application written in Vue that displays 10 random Hacker News stories selected from the top 500 stories and sorts them by Story Score ascending.
 
 ## Installation
