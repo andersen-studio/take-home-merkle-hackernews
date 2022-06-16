@@ -65,6 +65,7 @@ Images associated with a story are lazy-loaded after rendering to improve percei
 - Several loading stages to ensure good UX
 - SCSS framework developed to generate utility classes for common styling tasks such as flexbox, margins, etc.
 - Continual revision and tweaks based on linter and manual testing in browser & mobile (Chrome, Android, iPhone) for polish
+- Metadata such as manifests, favicon, title, etc. added for overall presentation as well as quick sharing options
 - README polish
 - Deployment via GitHub actions and DigitalOcean
 
