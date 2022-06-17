@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue'
 import { fetchTopStories, fetchStory, fetchUser } from '@/services/HackerNewsAxios';
 import { getArraySample, getSortedByScore } from '@/helpers/ArrayHelpers';
 import StoryItem from '@/components/StoryItem.vue';
+import FlexList from '@/components/FlexList.vue'
 import { Story } from '@/interfaces/Story'
 import LoadingSpinner from '@/components/LoadingSpinner.vue';
 
@@ -56,9 +57,9 @@ onMounted(async () => {
         href="https://github.com/andersen-studio/take-home-merkle-hackernews">GitHub</a>
     </div>
   </div>
-  <div class="p-md pt-55 flex w-full mx-auto max-w-container" v-if="!loading && stories">
+  <FlexList v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
-  </div>
+  </FlexList>
   <LoadingSpinner v-else />
 </template>
 
