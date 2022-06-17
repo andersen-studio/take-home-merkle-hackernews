@@ -47,9 +47,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="w-full mx-auto max-w-container pt-lg">
+  <div class="w-full mx-auto max-w-container pt-md">
     <div class="fixed bg-dark w-full flex flex-center max-w-container pl-md pr-md pt-md pb-md">
-      <h1 class="logo pl-md ml-sm bg-dark">Random Hacker News</h1>
+      <h1 class="logo bg-dark">Random Hacker News</h1>
       <button tabindex="0" style="border-style: solid;" :class="{ disabled: loading }"
         class="max-w-200 button border border-dark-lighter p-md bg-dark-lighter text-md text-light"
         @click="loadStories()">GET 10 NEW STORIES</button>
@@ -57,7 +57,7 @@ onMounted(async () => {
         href="https://github.com/andersen-studio/take-home-merkle-hackernews">GitHub</a>
     </div>
   </div>
-  <FlexList v-if="!loading && stories">
+  <FlexList class="mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
   </FlexList>
   <LoadingSpinner v-else />

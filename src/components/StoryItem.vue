@@ -46,7 +46,7 @@ onMounted(async () => {
 </template>
 <style scoped lang="scss">
 .skeleton {
-  padding-top: 200px;
+  padding-top: 150px;
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85), transparent);
   opacity: 1;
   transition: opacity 500ms ease-in-out;
@@ -71,11 +71,10 @@ onMounted(async () => {
 .card {
   width: 500px;
   border-radius: 6px;
+  overflow: hidden;
   background-size: cover;
   padding-top: 100px;
   min-width: 0;
-  border-style: solid;
-  border-width: 5px;
   transition: all 200ms ease-in-out;
   background-position: center center;
   position: relative;
