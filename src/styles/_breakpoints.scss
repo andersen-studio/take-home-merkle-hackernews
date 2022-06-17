@@ -1,6 +1,22 @@
 $breakpoint-mobile: 1000px;
 
+.show-mobile {
+  display: none;
+}
+
+.hide-mobile {
+  display: inherit;
+}
+
 @media (max-width: $breakpoint-mobile) {
+  .show-mobile {
+    display: inherit;
+  }
+
+  .hide-mobile {
+    display: none;
+  }
+
   .mobile-no-pt {
     padding-top: 0px !important;
   }
