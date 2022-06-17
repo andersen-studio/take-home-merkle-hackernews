@@ -21,8 +21,8 @@ onMounted(async () => {
 </script>
 
 <template>
-  <a class="w-1-of-5 m-md card max-w-full border-dark bg-dark-lighter mobile-no-pt" :class="{ loading }" target="_blank"
-    :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id" :style="loading ?
+  <a class="w-1-of-5 m-md card max-w-full border-dark border bg-dark-lighter mobile-no-pt" :class="{ loading }"
+    target="_blank" :href="story.url || 'https://news.ycombinator.com/item?id=' + story.id" :style="loading ?
     'background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);'
     : `background-image: url(${story.thumbnail});`">
     <div class="pb-md pl-md pr-md skeleton">
@@ -64,7 +64,8 @@ onMounted(async () => {
   position: absolute;
   top: 0;
   right: 0;
-  border-bottom-left-radius: 4px;
+  border-bottom-left-radius: 6px;
+  overflow: visible;
   text-align: right;
 }
 
