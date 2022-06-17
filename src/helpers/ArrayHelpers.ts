@@ -7,9 +7,9 @@ export function getArraySample(inputArray: number[] = [], maxLength = 10): numbe
   let i = workingArray.length
   while (--i > 0 && steps <= maxLength) {
     const target = Math.floor(Math.random() * i + 1)
-    const temp = workingArray[target]
-    inputArray[target] = workingArray[i]
-    workingArray[i] = temp
+    const temp = workingArray[i]
+    workingArray[i] = workingArray[target]
+    workingArray[target] = temp
     steps++
   }
   return workingArray.length > maxLength
