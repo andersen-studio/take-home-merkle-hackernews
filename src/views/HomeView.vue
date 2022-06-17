@@ -59,9 +59,11 @@ onMounted(async () => {
   </div>
   <FlexList class="mx-auto max-w-container" v-if="!loading && stories">
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
+    <p class="text-center pt-lg pb-lg">© 2022 <a class="text-accent" target="_blank"
+        href="https://andersen.studio">Tobias
+        Andersen</a></p>
   </FlexList>
   <LoadingSpinner v-else />
-  <p>©2022 Tobias Andersen</p>
 </template>
 
 <style lang="scss" scoped>
