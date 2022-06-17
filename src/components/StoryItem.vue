@@ -56,22 +56,18 @@ onMounted(async () => {
   }
 }
 
-.points {
-  border-radius: 16px;
-}
-
 .score {
   position: absolute;
   top: 0;
   right: 0;
-  border-bottom-left-radius: 6px;
+  border-bottom-left-radius: 4px;
   overflow: visible;
   text-align: right;
 }
 
 .card {
   width: 500px;
-  border-radius: 6px;
+  border-radius: 4px;
   overflow: hidden;
   background-size: cover;
   padding-top: 100px;

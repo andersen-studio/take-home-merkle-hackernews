@@ -61,6 +61,7 @@ onMounted(async () => {
     <StoryItem v-for="story in stories" :story="story" :key="story.id" />
   </FlexList>
   <LoadingSpinner v-else />
+  <p>©2022 Tobias Andersen</p>
 </template>
 
 <style lang="scss" scoped>
