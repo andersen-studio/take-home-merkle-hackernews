@@ -26,9 +26,9 @@ onMounted(async () => {
     'background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNkYAAAAAYAAjCB0C8AAAAASUVORK5CYII=);'
     : `background-image: url(${story.thumbnail});`">
     <div class="pb-md pl-md pr-md skeleton">
-      <span class="score p-md bg-dark text-lg font-bold">
+      <span class="score p-sm bg-dark text-lg">
         <div>{{ story.score }}</div>
-        <div class="text-md text-accent ">Point{{ story.score > 1 ? 's' : '' }}</div>
+        <div class="text-md text-accent font-regular">Point{{ story.score > 1 ? 's' : '' }}</div>
       </span>
       <div class="title line-height-title text-display mb-sm">
         {{ story.title || ' ' }}
@@ -58,11 +58,11 @@ onMounted(async () => {
 
 .score {
   position: absolute;
+  text-align: right;
   top: 0;
   right: 0;
   border-bottom-left-radius: 4px;
   overflow: visible;
-  text-align: right;
 }
 
 .card {
